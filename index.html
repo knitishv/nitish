@@ -1,35 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matrimonial Profile - Nitish Kumar</title>
+    <title>Nitish Kumar | Professional Portfolio</title>
     
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Lora', 'serif'],
-                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
                     },
                     colors: {
-                        wed: {
-                            light: '#fdfbf7',
-                            primary: '#8b2c3d', 
-                            secondary: '#d4af37',
-                            text: '#2c221e',
-                            muted: '#7a6a63',
-                            bg: '#f4eee8'
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            900: '#1e3a8a',
+                            950: '#172554',
                         }
                     },
                     animation: {
-                        'fade-in': 'fadeIn 0.5s ease-out forwards',
-                        'slide-up': 'slideUp 0.6s ease-out forwards',
+                        'fade-in': 'fadeIn 0.4s ease-out forwards',
+                        'slide-up': 'slideUp 0.5s ease-out forwards',
                     },
                     keyframes: {
                         fadeIn: {
@@ -37,7 +41,7 @@
                             '100%': { opacity: '1' },
                         },
                         slideUp: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '0%': { opacity: '0', transform: 'translateY(15px)' },
                             '100%': { opacity: '1', transform: 'translateY(0)' },
                         }
                     }
@@ -46,476 +50,612 @@
         }
     </script>
 
+    <!-- Custom Styles -->
     <style>
         body {
-            background-color: theme('colors.wed.bg');
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e0d5c1' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
             -webkit-tap-highlight-color: transparent;
+            background-color: #f8fafc; /* slate-50 */
         }
-        .page-content { display: none; }
-        .page-content.active { display: block; }
         
-        /* Hide scrollbar for horizontal nav but keep functionality */
+        .section-content { display: none; }
+        .section-content.active { display: block; }
+        
+        /* Hide scrollbar for horizontal mobile nav */
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
-            background-color: theme('colors.wed.secondary');
-            margin: 12px auto 0;
-            border-radius: 2px;
-        }
+        /* Custom scrollbar for desktop sidebar */
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #0f172a; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #475569; }
     </style>
 </head>
 
-<body class="text-wed-text font-sans antialiased min-h-screen flex flex-col items-center pb-12">
+<body class="text-slate-800 font-sans antialiased">
 
-    <!-- Header / Banner -->
-    <div class="w-full bg-wed-primary h-48 relative flex flex-col items-center justify-start pt-8">
-        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 20px 20px;"></div>
-        <h1 class="text-white font-serif text-3xl sm:text-4xl font-bold z-10 tracking-wide text-center px-4">Nitish Kumar</h1>
-        <p class="text-wed-secondary/90 font-medium tracking-widest uppercase text-xs sm:text-sm mt-2 z-10">Matrimonial Profile</p>
-    </div>
-
-    <!-- Main Container -->
-    <div class="w-full max-w-5xl px-4 sm:px-6 lg:px-8 mt-[-60px] z-20 flex flex-col items-center">
+    <div class="flex flex-col md:flex-row min-h-screen">
         
-        <!-- Profile Image -->
-        <div class="w-32 h-32 sm:w-40 sm:h-40 rounded-full border-4 border-wed-light shadow-xl overflow-hidden bg-white flex items-center justify-center shrink-0 mb-6">
-            <img src="https://placehold.co/400x400/e2e8f0/64748b?text=Add+Photo" alt="Nitish Kumar" class="w-full h-full object-cover">
-        </div>
-
-        <!-- Interactive Navigation Menu -->
-        <nav class="w-full bg-white rounded-xl shadow-md border border-amber-100 overflow-hidden mb-8 sticky top-4 z-50">
-            <ul class="flex overflow-x-auto no-scrollbar justify-start sm:justify-center divide-x divide-amber-50">
-                <li>
-                    <button onclick="showPage('home')" id="nav-home" class="nav-link w-full px-6 py-4 text-sm font-semibold text-wed-primary bg-amber-50/50 hover:bg-amber-50 transition-colors whitespace-nowrap flex items-center gap-2">
-                        <i class="fas fa-user"></i> Overview
-                    </button>
-                </li>
-                <li>
-                    <button onclick="showPage('family')" id="nav-family" class="nav-link w-full px-6 py-4 text-sm font-medium text-wed-muted hover:bg-amber-50 transition-colors whitespace-nowrap flex items-center gap-2">
-                        <i class="fas fa-home"></i> Family Details
-                    </button>
-                </li>
-                <li>
-                    <button onclick="showPage('education')" id="nav-education" class="nav-link w-full px-6 py-4 text-sm font-medium text-wed-muted hover:bg-amber-50 transition-colors whitespace-nowrap flex items-center gap-2">
-                        <i class="fas fa-graduation-cap"></i> Education & Career
-                    </button>
-                </li>
-                <li>
-                    <button onclick="showPage('research')" id="nav-research" class="nav-link w-full px-6 py-4 text-sm font-medium text-wed-muted hover:bg-amber-50 transition-colors whitespace-nowrap flex items-center gap-2">
-                        <i class="fas fa-flask"></i> Research Works
-                    </button>
-                </li>
-                <li>
-                    <button onclick="showPage('hobbies')" id="nav-hobbies" class="nav-link w-full px-6 py-4 text-sm font-medium text-wed-muted hover:bg-amber-50 transition-colors whitespace-nowrap flex items-center gap-2">
-                        <i class="fas fa-heart"></i> Lifestyle & Hobbies
-                    </button>
-                </li>
-            </ul>
-        </nav>
-
-        <!-- Content Area -->
-        <div class="w-full bg-wed-light shadow-2xl rounded-2xl border border-amber-100 overflow-hidden min-h-[500px]">
+        <!-- Sidebar / Header -->
+        <aside class="w-full md:w-72 lg:w-80 bg-slate-900 text-white flex flex-col md:fixed md:h-screen z-40 shadow-2xl">
             
-            <!-- 1. HOME / OVERVIEW PAGE -->
-            <section id="home" class="page-content active p-8 sm:p-12">
-                <div class="text-center max-w-3xl mx-auto mb-10 animate-slide-up">
-                    <i class="fas fa-quote-left text-wed-secondary/40 text-3xl mb-4"></i>
-                    <p class="text-wed-text text-lg sm:text-xl leading-relaxed italic font-serif">
-                        "A balanced individual with deep roots in traditional family values and a modern, scientific outlook towards life. Passionate about spiritual well-being, engineering solutions for the environment, and building a meaningful future."
+            <!-- Profile Info -->
+            <div class="p-6 md:p-8 flex flex-col items-center md:border-b border-slate-800 relative">
+                <!-- Background subtle glow -->
+                <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-brand-900/50 to-transparent pointer-events-none"></div>
+                
+                <div class="relative z-10">
+                    <img src="InShot_20260603_155604969.jpg" alt="Nitish Kumar" class="w-32 h-32 md:w-44 md:h-44 rounded-full border-4 border-slate-800 object-cover shadow-xl bg-slate-800 transition-transform duration-300 hover:scale-105">
+                </div>
+                
+                <h1 class="text-2xl md:text-3xl font-bold mt-5 tracking-tight text-center">Nitish Kumar</h1>
+                
+                <!-- JOB STATUS: Update this placeholder -->
+                <p class="text-brand-500 font-medium text-sm mt-1.5 text-center px-4 bg-brand-950/50 py-1 px-3 rounded-full border border-brand-900 mt-3">
+                    [Your Position] @ [Company]
+                </p>
+                
+                <!-- Social Links -->
+                <div class="flex gap-3 mt-6 relative z-10">
+                    <a href="https://www.linkedin.com/in/knitishv/" target="_blank" class="w-9 h-9 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:bg-brand-600 hover:text-white transition-all shadow-md hover:shadow-brand-500/30">
+                        <i class="fab fa-linkedin-in text-sm"></i>
+                    </a>
+                    <a href="https://www.facebook.com/in/knitish.nitt" target="_blank" class="w-9 h-9 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:bg-brand-600 hover:text-white transition-all shadow-md hover:shadow-brand-500/30">
+                        <i class="fab fa-facebook-f text-sm"></i>
+                    </a>
+                    <a href="mailto:tp@nitt.edu" class="w-9 h-9 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:bg-brand-600 hover:text-white transition-all shadow-md hover:shadow-brand-500/30">
+                        <i class="fas fa-envelope text-sm"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Navigation Menu -->
+            <nav class="w-full md:flex-1 overflow-x-auto md:overflow-y-auto custom-scrollbar bg-slate-900 sticky top-0 md:static border-b md:border-b-0 border-slate-800 no-scrollbar">
+                <ul class="flex md:flex-col p-2 md:p-5 gap-1 md:gap-2 min-w-max md:min-w-0">
+                    <li>
+                        <button id="nav-about" onclick="showSection('about')" class="nav-btn active w-full text-left px-4 py-3.5 rounded-xl text-sm font-medium transition-all bg-brand-600 text-white flex items-center gap-3 shadow-lg shadow-brand-600/20">
+                            <i class="fas fa-user w-5 text-center"></i> <span>Professional Overview</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button id="nav-experience" onclick="showSection('experience')" class="nav-btn w-full text-left px-4 py-3.5 rounded-xl text-sm font-medium transition-all text-slate-400 hover:bg-slate-800 hover:text-white flex items-center gap-3">
+                            <i class="fas fa-briefcase w-5 text-center"></i> <span>Experience</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button id="nav-research" onclick="showSection('research')" class="nav-btn w-full text-left px-4 py-3.5 rounded-xl text-sm font-medium transition-all text-slate-400 hover:bg-slate-800 hover:text-white flex items-center gap-3">
+                            <i class="fas fa-microscope w-5 text-center"></i> <span>Research & Education</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button id="nav-activities" onclick="showSection('activities')" class="nav-btn w-full text-left px-4 py-3.5 rounded-xl text-sm font-medium transition-all text-slate-400 hover:bg-slate-800 hover:text-white flex items-center gap-3">
+                            <i class="fas fa-users w-5 text-center"></i> <span>Extracurriculars</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button id="nav-hobbies" onclick="showSection('hobbies')" class="nav-btn w-full text-left px-4 py-3.5 rounded-xl text-sm font-medium transition-all text-slate-400 hover:bg-slate-800 hover:text-white flex items-center gap-3">
+                            <i class="fas fa-compass w-5 text-center"></i> <span>Hobbies & Interests</span>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+            
+            <!-- Resume Download Button -->
+            <div class="hidden md:block p-6 border-t border-slate-800">
+                <a href="102120049_Nitish Kumar.pdf" target="_blank" class="flex items-center justify-center gap-2 w-full py-3 px-4 bg-slate-800 hover:bg-slate-700 text-slate-200 text-sm font-medium rounded-xl transition-colors border border-slate-700 hover:border-slate-600">
+                    <i class="fas fa-download"></i> Download Resume
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 md:ml-72 lg:ml-80 p-5 sm:p-8 lg:p-12 xl:p-16 w-full max-w-6xl overflow-hidden min-h-[800px]">
+            
+            <!-- 1. ABOUT SECTION -->
+            <section id="about" class="section-content active animate-fade-in">
+                <div class="mb-10">
+                    <h2 class="text-3xl font-bold text-slate-900 mb-4 tracking-tight">About Me</h2>
+                    <div class="w-16 h-1.5 bg-brand-600 rounded-full mb-8"></div>
+                    <p class="text-slate-600 leading-relaxed text-lg max-w-3xl">
+                        A dedicated and detail-oriented Chemical Engineering graduate from the National Institute of Technology (NIT), Trichy. 
+                        I am passionate about process engineering, industrial quality assurance, and developing sustainable environmental solutions. 
+                        My academic background is complemented by strong hands-on industrial experience and a profound interest in scientific research.
                     </p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8 animate-slide-up" style="animation-delay: 0.1s;">
-                    <!-- Quick Facts -->
-                    <div class="bg-white p-6 rounded-xl border border-amber-50 shadow-sm">
-                        <h3 class="font-serif font-semibold text-wed-primary text-xl mb-6 border-b border-amber-100 pb-2">At a Glance</h3>
-                        <ul class="space-y-4">
+                <!-- Current Job Status Card -->
+                <div class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm mb-10 hover:shadow-md transition-shadow relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-brand-50 rounded-bl-full -z-10 opacity-70"></div>
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-6 flex items-center gap-2">
+                        <i class="fas fa-circle text-green-500 text-[8px] animate-pulse"></i> Current Status
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center shrink-0">
+                                <i class="fas fa-briefcase text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-slate-500 font-medium mb-1">Current Position</p>
+                                <!-- UPDATE THESE PLACEHOLDERS -->
+                                <p class="text-lg font-bold text-slate-900">[Your Position Title]</p>
+                                <p class="text-brand-600 font-medium">[Your Company Name]</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-slate-50 text-slate-600 flex items-center justify-center shrink-0">
+                                <i class="fas fa-map-marker-alt text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-slate-500 font-medium mb-1">Location & Tenure</p>
+                                <!-- UPDATE THESE PLACEHOLDERS -->
+                                <p class="text-slate-900 font-medium">[Current City, State]</p>
+                                <p class="text-slate-500 text-sm">Joined: [Month, Year]</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact & Addresses Grid -->
+                <h3 class="text-xl font-bold text-slate-900 mb-6">Contact & Demographics</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    
+                    <!-- Contact Details -->
+                    <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:border-brand-300 transition-colors">
+                        <div class="flex items-center gap-3 mb-4">
+                            <i class="fas fa-address-book text-brand-500"></i>
+                            <h4 class="font-semibold text-slate-900">Contact Details</h4>
+                        </div>
+                        <ul class="space-y-3">
                             <li class="flex items-start gap-3">
-                                <i class="fas fa-calendar-day text-wed-secondary mt-1 w-5 text-center"></i>
+                                <i class="fas fa-envelope text-slate-400 mt-1 w-4"></i>
                                 <div>
-                                    <span class="block text-xs text-wed-muted uppercase font-bold">Date of Birth</span>
-                                    <span class="font-medium">28th June 2002</span>
+                                    <p class="text-xs text-slate-500 font-medium">Email</p>
+                                    <a href="mailto:tp@nitt.edu" class="text-slate-800 hover:text-brand-600">tp@nitt.edu</a> 
                                 </div>
                             </li>
                             <li class="flex items-start gap-3">
-                                <i class="fas fa-map-marker-alt text-wed-secondary mt-1 w-5 text-center"></i>
+                                <i class="fas fa-phone-alt text-slate-400 mt-1 w-4"></i>
                                 <div>
-                                    <span class="block text-xs text-wed-muted uppercase font-bold">Hometown</span>
-                                    <span class="font-medium">Govindpur, Nawada, Bihar</span>
-                                </div>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <i class="fas fa-ruler-vertical text-wed-secondary mt-1 w-5 text-center"></i>
-                                <div>
-                                    <span class="block text-xs text-wed-muted uppercase font-bold">Height</span>
-                                    <span class="font-medium text-gray-400">[Add Height]</span>
-                                </div>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <i class="fas fa-om text-wed-secondary mt-1 w-5 text-center"></i>
-                                <div>
-                                    <span class="block text-xs text-wed-muted uppercase font-bold">Religion & Caste</span>
-                                    <span class="font-medium">Hindu, [Add Caste/Gotra]</span>
+                                    <p class="text-xs text-slate-500 font-medium">Phone</p>
+                                    <a href="tel:+914312501081" class="text-slate-800 hover:text-brand-600">+91-431-2501081</a>
                                 </div>
                             </li>
                         </ul>
                     </div>
 
-                    <!-- Contact/Action -->
-                    <div class="bg-wed-primary text-white p-6 rounded-xl shadow-md flex flex-col justify-center text-center">
-                        <h3 class="font-serif font-semibold text-2xl mb-4 text-wed-secondary">Let's Connect</h3>
-                        <p class="text-white/80 text-sm mb-6 px-4">
-                            If our profiles align and you would like to take this conversation forward, please feel free to reach out to our family.
-                        </p>
-                        <div class="space-y-3 mb-6">
-                            <div class="bg-white/10 rounded-lg p-3 inline-block w-full backdrop-blur-sm border border-white/20">
-                                <i class="fas fa-phone-alt text-wed-secondary mr-2"></i> [Family Phone Number]
-                            </div>
-                            <div class="bg-white/10 rounded-lg p-3 inline-block w-full backdrop-blur-sm border border-white/20">
-                                <i class="fas fa-envelope text-wed-secondary mr-2"></i> [Family Email Address]
-                            </div>
-                        </div>
-                        <div class="flex justify-center gap-4">
-                            <a href="https://www.linkedin.com/in/knitishv/" target="_blank" class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-wed-primary hover:bg-wed-secondary hover:text-white transition shadow-sm"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="https://www.facebook.com/in/knitish.nitt" target="_blank" class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-wed-primary hover:bg-wed-secondary hover:text-white transition shadow-sm"><i class="fab fa-facebook-f"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 2. FAMILY BACKGROUND PAGE -->
-            <section id="family" class="page-content p-8 sm:p-12">
-                <h2 class="text-2xl sm:text-3xl font-serif font-bold text-center text-wed-primary mb-2 section-title">Family Origins & Background</h2>
-                <p class="text-center text-wed-muted mb-10 max-w-2xl mx-auto mt-6">
-                    We belong to a respectable, closely-knit family based in Govindpur, Nawada, Bihar. We hold strong family values, respect our traditions, and encourage progressive education.
-                </p>
-
-                <div class="space-y-8 animate-slide-up">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white p-6 sm:p-8 rounded-xl border border-amber-100 shadow-sm relative overflow-hidden">
-                        <div class="absolute top-0 right-0 w-24 h-24 bg-amber-50 rounded-bl-full -z-10"></div>
-                        
-                        <!-- Parents Details -->
-                        <div>
-                            <div class="flex items-center gap-3 mb-2">
-                                <div class="w-8 h-8 rounded-full bg-wed-primary/10 flex items-center justify-center text-wed-primary"><i class="fas fa-user-tie"></i></div>
-                                <p class="text-sm text-wed-primary uppercase tracking-wider font-bold">Father</p>
-                            </div>
-                            <p class="font-serif text-xl mb-1 pl-11 text-gray-500">[Shri. Father's Name]</p>
-                            <p class="text-sm text-wed-muted pl-11">[Occupation/Business details]</p>
-                        </div>
-                        
-                        <div>
-                            <div class="flex items-center gap-3 mb-2">
-                                <div class="w-8 h-8 rounded-full bg-wed-primary/10 flex items-center justify-center text-wed-primary"><i class="fas fa-user-friends"></i></div>
-                                <p class="text-sm text-wed-primary uppercase tracking-wider font-bold">Mother</p>
-                            </div>
-                            <p class="font-serif text-xl mb-1 pl-11 text-gray-500">[Smt. Mother's Name]</p>
-                            <p class="text-sm text-wed-muted pl-11">Homemaker</p>
-                        </div>
-                    </div>
-
-                    <!-- Siblings & Relatives -->
-                    <div class="bg-white p-6 sm:p-8 rounded-xl border border-amber-100 shadow-sm relative overflow-hidden">
+                    <!-- Addresses -->
+                    <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:border-brand-300 transition-colors">
                         <div class="flex items-center gap-3 mb-4">
-                            <div class="w-8 h-8 rounded-full bg-wed-secondary/20 flex items-center justify-center text-wed-secondary"><i class="fas fa-users"></i></div>
-                            <p class="text-sm text-wed-primary uppercase tracking-wider font-bold">Siblings & Relatives</p>
+                            <i class="fas fa-home text-brand-500"></i>
+                            <h4 class="font-semibold text-slate-900">Addresses</h4>
                         </div>
-                        <div class="pl-11">
-                            <p class="text-wed-muted mb-4 text-sm">I have [Number] siblings. We share a strong bond and support each other's aspirations.</p>
-                            <ul class="space-y-3">
-                                <li class="bg-amber-50/50 p-4 rounded-lg border border-amber-50 flex items-start gap-3">
-                                    <i class="fas fa-circle text-[8px] text-wed-secondary mt-2"></i>
-                                    <div>
-                                        <p class="font-medium text-wed-text">[Brother / Sister's Name]</p>
-                                        <p class="text-sm text-wed-muted">[Briefly mention education/profession/marital status]</p>
-                                    </div>
-                                </li>
-                                <li class="bg-amber-50/50 p-4 rounded-lg border border-amber-50 flex items-start gap-3">
-                                    <i class="fas fa-circle text-[8px] text-wed-secondary mt-2"></i>
-                                    <div>
-                                        <p class="font-medium text-wed-text">[Brother / Sister's Name]</p>
-                                        <p class="text-sm text-wed-muted">[Briefly mention education/profession/marital status]</p>
-                                    </div>
-                                </li>
-                            </ul>
-                            <p class="text-sm text-wed-muted mt-6 italic">Our extended family includes well-settled professionals and respected individuals in our community.</p>
-                        </div>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3 border-b border-slate-100 pb-3">
+                                <i class="fas fa-map-pin text-slate-400 mt-1 w-4"></i>
+                                <div>
+                                    <p class="text-xs text-slate-500 font-medium">Current Address</p>
+                                    <!-- UPDATE THIS PLACEHOLDER -->
+                                    <p class="text-slate-800 text-sm">[Your Full Current Address, City, State, ZIP]</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-map-signs text-slate-400 mt-1 w-4"></i>
+                                <div>
+                                    <p class="text-xs text-slate-500 font-medium">Native Address</p>
+                                    <p class="text-slate-800 text-sm">Govindpur, Nawada, Bihar</p>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </section>
 
-            <!-- 3. EDUCATION & CAREER PAGE -->
-            <section id="education" class="page-content p-8 sm:p-12">
-                <h2 class="text-2xl sm:text-3xl font-serif font-bold text-center text-wed-primary mb-2 section-title">Education & Career</h2>
-                <p class="text-center text-wed-muted mb-10 max-w-2xl mx-auto mt-6">
-                    A strong academic foundation combined with practical industrial exposure, reflecting a dedication to excellence and continuous learning.
-                </p>
+            <!-- 2. EXPERIENCE SECTION -->
+            <section id="experience" class="section-content">
+                <div class="mb-10 animate-slide-up">
+                    <h2 class="text-3xl font-bold text-slate-900 mb-4 tracking-tight">Professional Experience</h2>
+                    <div class="w-16 h-1.5 bg-brand-600 rounded-full mb-8"></div>
+                </div>
 
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 animate-slide-up">
-                    <!-- Academics Timeline -->
-                    <div>
-                        <h3 class="font-serif text-xl text-wed-primary font-semibold mb-6 flex items-center gap-2">
-                            <i class="fas fa-university text-wed-secondary"></i> Academic Journey
+                <div class="relative border-l-2 border-slate-200 ml-4 md:ml-6 space-y-10 pb-8 animate-slide-up" style="animation-delay: 0.1s;">
+                    
+                    <!-- Current Job -->
+                    <div class="relative pl-8 md:pl-10">
+                        <div class="absolute w-5 h-5 bg-brand-600 rounded-full -left-[11px] top-1 border-4 border-white shadow-sm"></div>
+                        <div class="bg-white border border-brand-100 rounded-2xl p-6 shadow-md relative overflow-hidden">
+                            <div class="absolute top-0 left-0 w-1 h-full bg-brand-500"></div>
+                            <div class="flex flex-col md:flex-row md:items-center justify-between mb-2 gap-2">
+                                <h3 class="text-xl font-bold text-slate-900">[Your Position Title]</h3>
+                                <span class="text-sm font-medium text-brand-600 bg-brand-50 px-3 py-1 rounded-lg w-fit">[Date of Joining] – Present</span>
+                            </div>
+                            <p class="text-slate-700 font-medium mb-4">[Your Company Name], [Location]</p>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                <!-- UPDATE THIS PLACEHOLDER -->
+                                [Briefly describe your current responsibilities, daily tasks, and any major achievements or technologies you are working with at this company.]
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- ONGC -->
+                    <div class="relative pl-8 md:pl-10">
+                        <div class="absolute w-4 h-4 bg-slate-300 rounded-full -left-[9px] top-1.5 border-4 border-white"></div>
+                        <div class="bg-white border border-slate-200 rounded-2xl p-6 hover:shadow-md transition-shadow">
+                            <div class="flex flex-col md:flex-row md:items-center justify-between mb-2 gap-2">
+                                <h3 class="text-lg font-bold text-slate-900">Process Engineer Intern</h3>
+                                <span class="text-sm font-medium text-slate-500">Jun 2023 – Jul 2023</span>
+                            </div>
+                            <p class="text-slate-700 font-medium mb-4">ONGC Mehsana, Gujarat</p>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Acquired significant insights into the crude handling process and industrial operations under the Surface Team. Exposed to critical equipment including IDBH, two-phase separators, Knock-out drums, and Heater treaters, analyzing their design and operational mechanics.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Toolfab -->
+                    <div class="relative pl-8 md:pl-10">
+                        <div class="absolute w-4 h-4 bg-slate-300 rounded-full -left-[9px] top-1.5 border-4 border-white"></div>
+                        <div class="bg-white border border-slate-200 rounded-2xl p-6 hover:shadow-md transition-shadow">
+                            <div class="flex flex-col md:flex-row md:items-center justify-between mb-2 gap-2">
+                                <h3 class="text-lg font-bold text-slate-900">Quality Assurance Intern</h3>
+                                <span class="text-sm font-medium text-slate-500">Dec 2022 – Jan 2023</span>
+                            </div>
+                            <p class="text-slate-700 font-medium mb-4">Toolfab Engineering Pvt. Ltd., Trichy</p>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Conducted QA assessments on heavy engineering fabrication components (windmill towers). Gained expertise in industry auditing and certifications required to regulate product quality within the supply chain, authoring an extensive report on safe manufacturing practices.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Brakes India -->
+                    <div class="relative pl-8 md:pl-10">
+                        <div class="absolute w-4 h-4 bg-slate-300 rounded-full -left-[9px] top-1.5 border-4 border-white"></div>
+                        <div class="bg-white border border-slate-200 rounded-2xl p-6 hover:shadow-md transition-shadow">
+                            <div class="flex flex-col md:flex-row md:items-center justify-between mb-2 gap-2">
+                                <h3 class="text-lg font-bold text-slate-900">Industrial Intern</h3>
+                                <span class="text-sm font-medium text-slate-500">Jun 2022 – Jul 2022</span>
+                            </div>
+                            <p class="text-slate-700 font-medium mb-4">Brakes India Pvt. Ltd. (TVS Group), Chennai</p>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Completed industrial training in the rubber hose production process. Analyzed the various process stages, operational equipment, and strict quality control measures, bridging the gap between academic chemical engineering principles and industrial application.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- 3. RESEARCH & EDUCATION SECTION -->
+            <section id="research" class="section-content">
+                <div class="mb-10 animate-slide-up">
+                    <h2 class="text-3xl font-bold text-slate-900 mb-4 tracking-tight">Research & Education</h2>
+                    <div class="w-16 h-1.5 bg-brand-600 rounded-full mb-8"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 animate-slide-up" style="animation-delay: 0.1s;">
+                    
+                    <!-- Research Column -->
+                    <div class="lg:col-span-7 space-y-6">
+                        <h3 class="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+                            <i class="fas fa-microscope text-brand-500"></i> Published Articles
                         </h3>
-                        <div class="space-y-6 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-amber-200 before:to-transparent">
+                        
+                        <!-- Article 1 -->
+                        <a href="https://www.sciencedirect.com/science/article/pii/S1876107025006467?dgcid=coauthor" target="_blank" class="block bg-white border border-slate-200 rounded-2xl p-6 hover:border-brand-400 hover:shadow-lg transition-all group">
+                            <div class="flex justify-between items-start mb-3">
+                                <span class="text-xs font-bold bg-slate-100 text-slate-600 px-2 py-1 rounded">ScienceDirect</span>
+                                <i class="fas fa-external-link-alt text-slate-300 group-hover:text-brand-500 transition-colors"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-slate-900 leading-snug mb-2 group-hover:text-brand-600 transition-colors">Hybridization of nanofiltration and photocatalysis via functionalized graphene quantum dot-blended membranes...</h4>
+                            <p class="text-sm text-slate-500 mb-4 italic">Journal of the Taiwan Institute of Chemical Engineers</p>
+                            <p class="text-sm text-slate-600 line-clamp-2">Research focusing on the advanced degradation and removal of harmful antibiotics from water systems using engineered membranes.</p>
+                        </a>
+
+                        <!-- Article 2 -->
+                        <a href="https://doi.org/10.1002/jctb.70128" target="_blank" class="block bg-white border border-slate-200 rounded-2xl p-6 hover:border-brand-400 hover:shadow-lg transition-all group">
+                            <div class="flex justify-between items-start mb-3">
+                                <span class="text-xs font-bold bg-slate-100 text-slate-600 px-2 py-1 rounded">Wiley (JCTB)</span>
+                                <i class="fas fa-external-link-alt text-slate-300 group-hover:text-brand-500 transition-colors"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-slate-900 leading-snug mb-2 group-hover:text-brand-600 transition-colors">Tailored GQDs heterojunction membranes for photocatalytic degradation of metronidazole from wastewater</h4>
+                            <p class="text-sm text-slate-500 mb-4 italic">Journal of Chemical Technology & Biotechnology</p>
+                            <p class="text-sm text-slate-600 line-clamp-2">Evaluation of chemical modifications on membranes to tackle antibiotic pollutants, introducing a scalable photocatalyst platform.</p>
+                        </a>
+
+                        <!-- Academic Project -->
+                        <h3 class="text-xl font-bold text-slate-900 mt-10 mb-4 flex items-center gap-2">
+                            <i class="fas fa-laptop-code text-brand-500"></i> Technical Projects
+                        </h3>
+                        <div class="bg-white border border-slate-200 rounded-2xl p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="text-md font-bold text-slate-900">Chemical Process Modelling & Simulation</h4>
+                                <span class="text-xs bg-brand-50 text-brand-600 px-2 py-1 rounded font-bold">MATLAB</span>
+                            </div>
+                            <p class="text-sm text-slate-600 leading-relaxed mt-2">
+                                Employed MATLAB to model and simulate diverse chemical engineering problems, including steady-state and transient processes, reactor control optimization, and multi-domain heat conduction problems.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Education Column -->
+                    <div class="lg:col-span-5 space-y-6">
+                        <h3 class="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+                            <i class="fas fa-graduation-cap text-brand-500"></i> Education
+                        </h3>
+                        
+                        <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                            <div class="w-12 h-12 bg-slate-50 rounded-lg flex items-center justify-center text-brand-600 mb-4">
+                                <i class="fas fa-university text-xl"></i>
+                            </div>
+                            <h4 class="font-bold text-slate-900">B.Tech in Chemical Engineering</h4>
+                            <p class="text-sm font-medium text-slate-600 mt-1">National Institute of Technology (NIT), Trichy</p>
+                            <p class="text-xs text-slate-400 font-medium mt-1">2020 – 2024</p>
                             
-                            <!-- BTech -->
-                            <div class="relative pl-12 pb-4">
-                                <div class="absolute w-8 h-8 bg-wed-light border-2 border-wed-primary rounded-full left-1 top-0 flex items-center justify-center z-10">
-                                    <i class="fas fa-graduation-cap text-wed-primary text-xs"></i>
+                            <div class="mt-4 pt-4 border-t border-slate-100 space-y-2">
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-slate-500">CGPA:</span>
+                                    <span class="font-bold text-slate-900">8.15</span>
                                 </div>
-                                <h4 class="text-lg font-bold text-wed-text">B.Tech in Chemical Engineering</h4>
-                                <p class="font-medium text-wed-primary text-sm mt-1">National Institute of Technology (NIT), Trichy</p>
-                                <p class="text-xs text-wed-muted font-bold tracking-wider mt-1 mb-2">2020 - 2024</p>
-                                <div class="bg-white p-4 rounded-lg border border-amber-50 shadow-sm mt-2 text-sm text-wed-muted">
-                                    <ul class="list-disc list-inside space-y-1">
-                                        <li>Graduated with a stellar CGPA of 8.15.</li>
-                                        <li>Awarded the prestigious <strong>RECAL Scholarship (Silver 72)</strong> by NIT Trichy Alumni (2022-23).</li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <!-- Schooling -->
-                            <div class="relative pl-12">
-                                <div class="absolute w-8 h-8 bg-wed-light border-2 border-wed-secondary rounded-full left-1 top-0 flex items-center justify-center z-10">
-                                    <i class="fas fa-school text-wed-secondary text-xs"></i>
-                                </div>
-                                <h4 class="text-lg font-bold text-wed-text">Early Education</h4>
-                                <p class="font-medium text-wed-primary text-sm mt-1">+2 High School & T.V. High School, Bihar</p>
-                                <p class="text-xs text-wed-muted font-bold tracking-wider mt-1 mb-2">Up to 2019</p>
-                                <div class="bg-white p-4 rounded-lg border border-amber-50 shadow-sm mt-2 text-sm text-wed-muted">
-                                    <ul class="list-disc list-inside space-y-1">
-                                        <li>Secured 88% in Class XII (BSEB).</li>
-                                        <li>Secured 85.8% in Class X.</li>
-                                        <li>2nd Place in State Science Seminar on Agriculture.</li>
-                                    </ul>
+                                <div class="flex items-start gap-2 text-sm">
+                                    <i class="fas fa-award text-amber-500 mt-0.5"></i>
+                                    <span class="text-slate-700">RECAL Scholarship (Silver 72) by Alumni of NIT Trichy (2022-23)</span>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Career / Internships -->
-                    <div>
-                        <h3 class="font-serif text-xl text-wed-primary font-semibold mb-6 flex items-center gap-2">
-                            <i class="fas fa-briefcase text-wed-secondary"></i> Professional Exposure
-                        </h3>
-                        <div class="space-y-4">
-                            <!-- ONGC -->
-                            <div class="bg-white p-5 rounded-xl border-l-4 border-l-wed-primary shadow-sm hover:shadow-md transition-shadow">
-                                <div class="flex justify-between items-start mb-2">
-                                    <h4 class="font-bold text-wed-text">Process Engineer Intern</h4>
-                                    <span class="text-xs bg-amber-50 text-wed-primary px-2 py-1 rounded font-semibold">2023</span>
-                                </div>
-                                <p class="text-sm font-medium text-wed-muted mb-2">ONGC Mehsana, Gujarat</p>
-                                <p class="text-sm text-wed-text/80 leading-relaxed">
-                                    Gained hands-on industrial experience in crude handling processes and surface team operations.
-                                </p>
+                        <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                            <h4 class="font-bold text-slate-900">Higher Secondary (Class XII)</h4>
+                            <p class="text-sm font-medium text-slate-600 mt-1">+2 High School, Govindpur, BSEB</p>
+                            <div class="flex justify-between text-sm mt-3 pt-3 border-t border-slate-100">
+                                <span class="text-slate-500">Graduated: 2019</span>
+                                <span class="font-bold text-slate-900">88%</span>
                             </div>
+                        </div>
 
-                            <!-- Toolfab -->
-                            <div class="bg-white p-5 rounded-xl border-l-4 border-l-wed-secondary shadow-sm hover:shadow-md transition-shadow">
-                                <div class="flex justify-between items-start mb-2">
-                                    <h4 class="font-bold text-wed-text">Quality Assurance Intern</h4>
-                                    <span class="text-xs bg-amber-50 text-wed-primary px-2 py-1 rounded font-semibold">2022-23</span>
-                                </div>
-                                <p class="text-sm font-medium text-wed-muted mb-2">Toolfab Engineering Pvt. Ltd., Trichy</p>
-                                <p class="text-sm text-wed-text/80 leading-relaxed">
-                                    Assessed heavy engineering components (windmill towers) to maintain strict quality standards in the supply chain.
-                                </p>
+                        <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                            <h4 class="font-bold text-slate-900">Secondary (Class X)</h4>
+                            <p class="text-sm font-medium text-slate-600 mt-1">T. V. High School, Govindpur, BSEB</p>
+                            <div class="flex justify-between text-sm mt-3 pt-3 border-t border-slate-100 mb-3">
+                                <span class="text-slate-500">Graduated: 2017</span>
+                                <span class="font-bold text-slate-900">85.8%</span>
                             </div>
-
-                            <!-- Brakes India -->
-                            <div class="bg-white p-5 rounded-xl border-l-4 border-l-gray-300 shadow-sm hover:shadow-md transition-shadow">
-                                <div class="flex justify-between items-start mb-2">
-                                    <h4 class="font-bold text-wed-text">Industrial Intern</h4>
-                                    <span class="text-xs bg-amber-50 text-wed-primary px-2 py-1 rounded font-semibold">2022</span>
-                                </div>
-                                <p class="text-sm font-medium text-wed-muted mb-2">Brakes India Pvt. Ltd. (TVS Group), Chennai</p>
-                                <p class="text-sm text-wed-text/80 leading-relaxed">
-                                    Studied manufacturing processes and quality control in industrial rubber hose production.
-                                </p>
+                            <div class="flex items-start gap-2 text-sm pt-2">
+                                <i class="fas fa-trophy text-amber-500 mt-0.5 w-4 text-center"></i>
+                                <span class="text-slate-700">2nd Place in State Science Seminar on "Innovations in Agriculture"</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- 4. RESEARCH WORKS PAGE -->
-            <section id="research" class="page-content p-8 sm:p-12">
-                <h2 class="text-2xl sm:text-3xl font-serif font-bold text-center text-wed-primary mb-2 section-title">Research & Intellect</h2>
-                <p class="text-center text-wed-muted mb-10 max-w-2xl mx-auto mt-6">
-                    Beyond standard academics, I possess a deep passion for scientific research, particularly in developing sustainable engineering solutions to address global environmental challenges like water purification.
-                </p>
+            <!-- 4. EXTRACURRICULARS SECTION -->
+            <section id="activities" class="section-content">
+                <div class="mb-10 animate-slide-up">
+                    <h2 class="text-3xl font-bold text-slate-900 mb-4 tracking-tight">Leadership & Extracurriculars</h2>
+                    <div class="w-16 h-1.5 bg-brand-600 rounded-full mb-8"></div>
+                    <p class="text-slate-600 max-w-2xl text-lg">Active participation in community service, technical symposiums, and wellness organizations, demonstrating strong leadership and teamwork capabilities.</p>
+                </div>
 
-                <div class="space-y-6 animate-slide-up">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 animate-slide-up" style="animation-delay: 0.1s;">
                     
-                    <!-- Research Article 1 -->
-                    <div class="bg-white rounded-xl shadow-md border border-amber-100 overflow-hidden group">
-                        <div class="bg-wed-primary text-white px-6 py-3 flex justify-between items-center">
-                            <span class="text-xs font-bold tracking-wider uppercase">Published Article</span>
-                            <span class="text-xs bg-white/20 px-2 py-1 rounded">2026</span>
+                    <!-- Club 1 -->
+                    <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:-translate-y-1 transition-transform">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center shrink-0">
+                                <i class="fas fa-leaf text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-slate-900">President</h3>
+                                <p class="text-sm text-slate-500">The Lifestyle Club (OSS), NIT Trichy</p>
+                            </div>
                         </div>
-                        <div class="p-6 sm:p-8">
-                            <h3 class="font-serif text-xl sm:text-2xl font-bold text-wed-text mb-3 group-hover:text-wed-primary transition-colors">
-                                Hybridization of nanofiltration and photocatalysis via functionalized graphene quantum dot-blended membranes...
-                            </h3>
-                            <p class="text-sm font-medium text-wed-secondary mb-4">
-                                <i class="fas fa-book-open mr-2"></i> Published in: <span class="text-wed-text italic">Journal of the Taiwan Institute of Chemical Engineers</span>
-                            </p>
-                            <p class="text-wed-muted text-sm leading-relaxed mb-6">
-                                This extensive research focuses on the degradation and removal of harmful antibiotics (like amoxicillin) from water systems. By creating advanced membranes utilizing functionalized graphene, we engineered a highly effective method for water purification and environmental safety.
-                            </p>
-                            <div class="flex items-center gap-4 border-t border-amber-50 pt-4">
-                                <a href="https://www.sciencedirect.com/science/article/pii/S1876107025006467?dgcid=coauthor" target="_blank" class="text-sm font-bold text-wed-primary hover:text-wed-secondary transition-colors flex items-center gap-2">
-                                    Read on ScienceDirect <i class="fas fa-external-link-alt text-xs"></i>
-                                </a>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Spearheaded a dynamic team to promote mental wellness and spirituality through practical approaches. Handled program coordination, networking, and financial management, successfully increasing club footfall by 50%.
+                        </p>
+                    </div>
+
+                    <!-- Club 2 -->
+                    <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:-translate-y-1 transition-transform">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center shrink-0">
+                                <i class="fas fa-cogs text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-slate-900">Head of Workshops Team</h3>
+                                <p class="text-sm text-slate-500">Alchemy, NIT Trichy</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Managed workshops for the national-level Chemical Engineering technical symposium. Coordinated with experts to organize high-impact sessions on "Aspen Plus" and "AI/ML in Chemical Engineering" for Alchemy 2023.
+                        </p>
+                    </div>
+
+                    <!-- Club 3 -->
+                    <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:-translate-y-1 transition-transform">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center shrink-0">
+                                <i class="fas fa-hands-helping text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-slate-900">Manager</h3>
+                                <p class="text-sm text-slate-500">National Service Scheme (NSS), NIT Trichy</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Ideated and executed community service events to spread awareness on socio-environmental issues. Successfully managed Special Camps, Eye Check-ups, and Blood Donation Drives on campus.
+                        </p>
+                    </div>
+
+                    <!-- Club 4 -->
+                    <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:-translate-y-1 transition-transform">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-12 h-12 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center shrink-0">
+                                <i class="fas fa-chalkboard-teacher text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-slate-900">Subject-Matter Expert</h3>
+                                <p class="text-sm text-slate-500">Filo Tutor</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Acted as a science tutor during the pandemic, teaching over 100 regular students online across India and completing 200+ teaching hours through the educational app platform.
+                        </p>
+                    </div>
+
+                    <!-- Club 5 -->
+                    <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:-translate-y-1 transition-transform md:col-span-2">
+                        <div class="flex flex-col md:flex-row md:items-center gap-6">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-slate-900 mb-1 flex items-center gap-2"><i class="fas fa-globe-asia text-brand-500"></i> Social Volunteering</h3>
+                                <p class="text-sm text-slate-600">Served as a Transcriber for the PrashantAdvait Foundation, helping to spread awareness regarding emerging social and global issues like climate change.</p>
+                            </div>
+                            <div class="w-px h-12 bg-slate-200 hidden md:block"></div>
+                            <div class="flex-1">
+                                <h3 class="font-bold text-slate-900 mb-1 flex items-center gap-2"><i class="fas fa-running text-brand-500"></i> Sports & Culture</h3>
+                                <p class="text-sm text-slate-600">Completed a 10km Marathon in 54 minutes (Sportsfete'22) and secured Second place in the 'Jhankaar' singing competition (Umang'21).</p>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Research Article 2 -->
-                    <div class="bg-white rounded-xl shadow-md border border-amber-100 overflow-hidden group">
-                        <div class="bg-amber-700 text-white px-6 py-3 flex justify-between items-center">
-                            <span class="text-xs font-bold tracking-wider uppercase">Published Article</span>
-                            <span class="text-xs bg-white/20 px-2 py-1 rounded">2026</span>
-                        </div>
-                        <div class="p-6 sm:p-8">
-                            <h3 class="font-serif text-xl sm:text-2xl font-bold text-wed-text mb-3 group-hover:text-amber-700 transition-colors">
-                                Tailored GQDs heterojunction membranes for photocatalytic degradation of metronidazole from wastewater
-                            </h3>
-                            <p class="text-sm font-medium text-wed-secondary mb-4">
-                                <i class="fas fa-book-open mr-2"></i> Published in: <span class="text-wed-text italic">Journal of Chemical Technology & Biotechnology (Wiley)</span>
-                            </p>
-                            <p class="text-wed-muted text-sm leading-relaxed mb-6">
-                                Evaluated the influence of specialized chemical modifications on membranes to tackle antibiotic pollutants in aquatic environments. The study introduced a scalable, highly efficient, and durable photocatalyst platform offering a promising route for sustainable, global water purification.
-                            </p>
-                            <div class="flex items-center gap-4 border-t border-amber-50 pt-4">
-                                <a href="https://doi.org/10.1002/jctb.70128" target="_blank" class="text-sm font-bold text-amber-700 hover:text-wed-secondary transition-colors flex items-center gap-2">
-                                    View DOI / Article <i class="fas fa-external-link-alt text-xs"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </section>
 
-            <!-- 5. HOBBIES & LIFESTYLE PAGE -->
-            <section id="hobbies" class="page-content p-8 sm:p-12">
-                <h2 class="text-2xl sm:text-3xl font-serif font-bold text-center text-wed-primary mb-2 section-title">Personality & Lifestyle</h2>
-                <p class="text-center text-wed-muted mb-10 max-w-2xl mx-auto mt-6">
-                    A fulfilling life requires balance. Beyond professional ambitions, I am deeply committed to physical fitness, mental wellness, creative expression, and giving back to society.
-                </p>
+            <!-- 5. HOBBIES SECTION -->
+            <section id="hobbies" class="section-content">
+                <div class="mb-10 animate-slide-up">
+                    <h2 class="text-3xl font-bold text-slate-900 mb-4 tracking-tight">Hobbies & Interests</h2>
+                    <div class="w-16 h-1.5 bg-brand-600 rounded-full mb-8"></div>
+                    <p class="text-slate-600 max-w-2xl text-lg">Maintaining a balanced lifestyle through creative expression, physical activity, and continuous cultural learning.</p>
+                </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 animate-slide-up">
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 animate-slide-up" style="animation-delay: 0.1s;">
                     
-                    <!-- Trait 1: Spiritual / Mindful -->
-                    <div class="bg-white p-6 rounded-xl border border-amber-100 shadow-sm hover:shadow-md transition-all group flex flex-col items-center text-center">
-                        <div class="w-14 h-14 bg-amber-50 rounded-full flex items-center justify-center text-wed-secondary mb-4 group-hover:scale-110 transition-transform">
-                            <i class="fas fa-om text-2xl"></i>
-                        </div>
-                        <h3 class="font-serif font-bold text-xl mb-2 text-wed-text">Spiritual & Mindful</h3>
-                        <p class="text-sm text-wed-muted leading-relaxed">
-                            Served as the <strong>President of The Lifestyle Club (OSS)</strong> at NIT Trichy. I actively advocate for spirituality and mental wellness, guiding others to approach life challenges with a practical, grounded, and scientific mindset.
-                        </p>
-                    </div>
-
-                    <!-- Trait 2: Socially Responsible -->
-                    <div class="bg-white p-6 rounded-xl border border-amber-100 shadow-sm hover:shadow-md transition-all group flex flex-col items-center text-center">
-                        <div class="w-14 h-14 bg-amber-50 rounded-full flex items-center justify-center text-wed-secondary mb-4 group-hover:scale-110 transition-transform">
-                            <i class="fas fa-hands-helping text-2xl"></i>
-                        </div>
-                        <h3 class="font-serif font-bold text-xl mb-2 text-wed-text">Socially Responsible</h3>
-                        <p class="text-sm text-wed-muted leading-relaxed">
-                            A dedicated volunteer. I have managed events for the <strong>National Service Scheme (NSS)</strong>, organizing blood donation and health camps. I also volunteer as a Transcriber for the <strong>PrashantAdvait Foundation</strong> to spread awareness on social issues.
-                        </p>
-                    </div>
-
-                    <!-- Trait 3: Fitness -->
-                    <div class="bg-white p-6 rounded-xl border border-amber-100 shadow-sm hover:shadow-md transition-all group flex flex-col items-center text-center">
-                        <div class="w-14 h-14 bg-amber-50 rounded-full flex items-center justify-center text-wed-secondary mb-4 group-hover:scale-110 transition-transform">
-                            <i class="fas fa-running text-2xl"></i>
-                        </div>
-                        <h3 class="font-serif font-bold text-xl mb-2 text-wed-text">Fitness Enthusiast</h3>
-                        <p class="text-sm text-wed-muted leading-relaxed">
-                            I firmly believe that a healthy mind resides in a healthy body. I maintain a regular fitness routine, enjoy running, and successfully completed a <strong>10km Marathon in 54 minutes</strong> during a college sports festival.
-                        </p>
-                    </div>
-
-                    <!-- Trait 4: Music & Creativity -->
-                    <div class="bg-white p-6 rounded-xl border border-amber-100 shadow-sm hover:shadow-md transition-all group flex flex-col items-center text-center">
-                        <div class="w-14 h-14 bg-amber-50 rounded-full flex items-center justify-center text-wed-secondary mb-4 group-hover:scale-110 transition-transform">
+                    <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm flex flex-col items-center justify-center text-center hover:shadow-md hover:border-brand-200 transition-all group">
+                        <div class="w-14 h-14 bg-slate-50 text-slate-600 rounded-full flex items-center justify-center mb-3 group-hover:bg-brand-50 group-hover:text-brand-600 transition-colors">
                             <i class="fas fa-microphone-alt text-2xl"></i>
                         </div>
-                        <h3 class="font-serif font-bold text-xl mb-2 text-wed-text">Music & Creativity</h3>
-                        <p class="text-sm text-wed-muted leading-relaxed">
-                            Music is my primary way to unwind and express creativity. I have a passion for singing and actively participated in cultural fests, notably securing <strong>Second place in 'Jhankaar'</strong>, a prominent singing competition.
-                        </p>
+                        <span class="font-medium text-slate-800 text-sm">Singing</span>
                     </div>
+
+                    <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm flex flex-col items-center justify-center text-center hover:shadow-md hover:border-brand-200 transition-all group">
+                        <div class="w-14 h-14 bg-slate-50 text-slate-600 rounded-full flex items-center justify-center mb-3 group-hover:bg-brand-50 group-hover:text-brand-600 transition-colors">
+                            <i class="fas fa-drum text-2xl"></i>
+                        </div>
+                        <span class="font-medium text-slate-800 text-sm">Playing Tabla</span>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm flex flex-col items-center justify-center text-center hover:shadow-md hover:border-brand-200 transition-all group">
+                        <div class="w-14 h-14 bg-slate-50 text-slate-600 rounded-full flex items-center justify-center mb-3 group-hover:bg-brand-50 group-hover:text-brand-600 transition-colors">
+                            <i class="fas fa-book-open text-2xl"></i>
+                        </div>
+                        <span class="font-medium text-slate-800 text-sm">Reading Books</span>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm flex flex-col items-center justify-center text-center hover:shadow-md hover:border-brand-200 transition-all group">
+                        <div class="w-14 h-14 bg-slate-50 text-slate-600 rounded-full flex items-center justify-center mb-3 group-hover:bg-brand-50 group-hover:text-brand-600 transition-colors">
+                            <i class="fas fa-pen-fancy text-2xl"></i>
+                        </div>
+                        <span class="font-medium text-slate-800 text-sm">Writing Articles</span>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm flex flex-col items-center justify-center text-center hover:shadow-md hover:border-brand-200 transition-all group">
+                        <div class="w-14 h-14 bg-slate-50 text-slate-600 rounded-full flex items-center justify-center mb-3 group-hover:bg-brand-50 group-hover:text-brand-600 transition-colors">
+                            <i class="fas fa-language text-2xl"></i>
+                        </div>
+                        <span class="font-medium text-slate-800 text-sm">Languages & Culture</span>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm flex flex-col items-center justify-center text-center hover:shadow-md hover:border-brand-200 transition-all group">
+                        <div class="w-14 h-14 bg-slate-50 text-slate-600 rounded-full flex items-center justify-center mb-3 group-hover:bg-brand-50 group-hover:text-brand-600 transition-colors">
+                            <i class="fas fa-camera-retro text-2xl"></i>
+                        </div>
+                        <span class="font-medium text-slate-800 text-sm">Photography</span>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm flex flex-col items-center justify-center text-center hover:shadow-md hover:border-brand-200 transition-all group">
+                        <div class="w-14 h-14 bg-slate-50 text-slate-600 rounded-full flex items-center justify-center mb-3 group-hover:bg-brand-50 group-hover:text-brand-600 transition-colors">
+                            <i class="fas fa-palette text-2xl"></i>
+                        </div>
+                        <span class="font-medium text-slate-800 text-sm">Sketching & Drawing</span>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm flex flex-col items-center justify-center text-center hover:shadow-md hover:border-brand-200 transition-all group">
+                        <div class="w-14 h-14 bg-slate-50 text-slate-600 rounded-full flex items-center justify-center mb-3 group-hover:bg-brand-50 group-hover:text-brand-600 transition-colors">
+                            <i class="fas fa-table-tennis text-2xl"></i>
+                        </div>
+                        <span class="font-medium text-slate-800 text-sm">Badminton</span>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm flex flex-col items-center justify-center text-center hover:shadow-md hover:border-brand-200 transition-all group">
+                        <div class="w-14 h-14 bg-slate-50 text-slate-600 rounded-full flex items-center justify-center mb-3 group-hover:bg-brand-50 group-hover:text-brand-600 transition-colors">
+                            <i class="fas fa-bicycle text-2xl"></i>
+                        </div>
+                        <span class="font-medium text-slate-800 text-sm">Cycling</span>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm flex flex-col items-center justify-center text-center hover:shadow-md hover:border-brand-200 transition-all group">
+                        <div class="w-14 h-14 bg-slate-50 text-slate-600 rounded-full flex items-center justify-center mb-3 group-hover:bg-brand-50 group-hover:text-brand-600 transition-colors">
+                            <i class="fas fa-hiking text-2xl"></i>
+                        </div>
+                        <span class="font-medium text-slate-800 text-sm">Trekking</span>
+                    </div>
+
                 </div>
             </section>
-        </div>
-        
-        <p class="mt-8 text-sm text-wed-muted/60 text-center mb-8">
-            Created with thoughtful intention for matrimonial consideration.
-        </p>
+            
+            <!-- Footer -->
+            <footer class="mt-16 pt-8 border-t border-slate-200 text-center text-slate-400 text-sm pb-8 md:pb-0">
+                <p>&copy; 2026 Nitish Kumar. Designed for Professional Portfolio.</p>
+            </footer>
 
+        </main>
     </div>
 
     <script>
-        // Simple SPA Router Function
-        function showPage(pageId) {
+        function showSection(pageId) {
             // 1. Hide all pages & remove animation classes
-            const pages = document.querySelectorAll('.page-content');
+            const pages = document.querySelectorAll('.section-content');
             pages.forEach(page => {
                 page.classList.remove('active');
-                // Remove animation classes to allow re-triggering
-                const animatedElements = page.querySelectorAll('.animate-slide-up');
-                animatedElements.forEach(el => {
+                // Remove animation class to allow re-triggering
+                page.classList.remove('animate-fade-in');
+                const slideUpElements = page.querySelectorAll('.animate-slide-up');
+                slideUpElements.forEach(el => {
                     el.style.animation = 'none';
-                    el.offsetHeight; // trigger reflow
+                    el.offsetHeight; /* trigger reflow */
                     el.style.animation = null; 
                 });
             });
 
-            // 2. Show the target page
+            // 2. Show target page
             const targetPage = document.getElementById(pageId);
             if(targetPage) {
                 targetPage.classList.add('active');
+                targetPage.classList.add('animate-fade-in');
             }
 
-            // 3. Update navigation button styles
-            const navLinks = document.querySelectorAll('.nav-link');
+            // 3. Update navigation button styling
+            const navLinks = document.querySelectorAll('.nav-btn');
             navLinks.forEach(link => {
-                // Reset to inactive state
-                link.classList.remove('text-wed-primary', 'bg-amber-50/50');
-                link.classList.add('text-wed-muted', 'hover:bg-amber-50');
+                // Reset to default sidebar state
+                link.classList.remove('bg-brand-600', 'text-white', 'shadow-lg', 'shadow-brand-600/20');
+                link.classList.add('text-slate-400', 'hover:bg-slate-800', 'hover:text-white');
             });
 
-            // Set active state on clicked button
+            // Highlight active button
             const activeNav = document.getElementById('nav-' + pageId);
             if(activeNav) {
-                activeNav.classList.remove('text-wed-muted', 'hover:bg-amber-50');
-                activeNav.classList.add('text-wed-primary', 'bg-amber-50/50');
+                activeNav.classList.remove('text-slate-400', 'hover:bg-slate-800', 'hover:text-white');
+                activeNav.classList.add('bg-brand-600', 'text-white', 'shadow-lg', 'shadow-brand-600/20');
             }
             
-            // Smooth scroll back to top of content area on mobile
+            // 4. Mobile UX: Scroll to top of content area on click
             if(window.innerWidth < 768) {
-                window.scrollTo({ top: 250, behavior: 'smooth' });
+                window.scrollTo({ top: document.querySelector('main').offsetTop - 20, behavior: 'smooth' });
             }
         }
-
-        // Initialize first page load
-        document.addEventListener('DOMContentLoaded', () => {
-            // Ensure Home is active on load
-            showPage('home');
-        });
+        
+        // Prevent horizontal scroll jumping on load
+        window.history.scrollRestoration = "manual";
     </script>
 </body>
 </html>
